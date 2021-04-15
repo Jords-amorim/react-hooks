@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+import { useState } from 'react'
 import './App.css';
 
 function App() {
+  const INITIAL_VALUE = 0
+  const [number, setNumber] = useState(INITIAL_VALUE)
+
+  const mais = () => {
+    setNumber(number + 1)
+  }
+
+  const menos = () => {
+    setNumber(number - 1)
+  }
+
+  const reset = () => {
+    setNumber(INITIAL_VALUE)
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Hello Hooks</h1>
       </header>
+      <main className="App-main">
+        <div className="content">
+          <button onClick={menos}>-</button>
+          <p>{number}</p>
+          <button onClick={mais}>+</button>
+        </div>
+        <button
+          onClick={reset}
+          className="reset_bt"
+        >
+          Reset number
+        </button>
+      </main>
     </div>
   );
 }
